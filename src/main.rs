@@ -20,6 +20,10 @@ struct Config {
 
 impl Config {
     fn new(args: &[String]) -> Self {
+        if args.len() < 3 {
+            panic!("not enough arguments");
+        }
+
         let query = args.get(1).unwrap().to_string();
         let file_path = args.get(2).unwrap().to_string();
 
