@@ -5,7 +5,7 @@ use minigrep::Config;
 fn main() {
     let args = env::args().collect::<Vec<String>>();
     let config = Config::build(&args).unwrap_or_else(|exception| {
-        println!("Problem parsing arguments: {exception}");
+        eprintln!("Problem parsing arguments: {exception}");
         process::exit(1);
     });
 
@@ -15,7 +15,7 @@ fn main() {
     );
 
     if let Err(exception) = minigrep::run(config) {
-        println!("Application Error: {exception}");
+        eprintln!("Application Error: {exception}");
         process::exit(1);
     };
 }
